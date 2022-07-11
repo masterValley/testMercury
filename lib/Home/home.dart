@@ -10,7 +10,7 @@ class HomeStart extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text("Center"),
+        child: Text("Mercury Booking"),
       )
     );
   }
