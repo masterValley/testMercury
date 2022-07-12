@@ -14,7 +14,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Mercury Booking',
-      theme: ThemeData(),
+      theme: ThemeData(
+        
+      ),
       home: const HomeStart(),
     );
   }

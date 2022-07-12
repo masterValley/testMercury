@@ -14,12 +14,12 @@ void main() {
   await tester.pumpWidget(const MaterialApp(
     home: Scaffold(
       body: Center(
-        child: Text("MERCURY\nBooking"),
+        child: Text("MERCURY"),
       )
     )
   ));
 
   // Find a widget that displays the letter 'H'.
-  expect(find.text('MERCURY\nBooking'), findsOneWidget);
+  expect(find.text('MERCURY'), findsOneWidget);
 });
 }
