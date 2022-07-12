@@ -19,6 +19,6 @@ void main() {
   ));
 
   // Find a widget that displays the letter 'H'.
-  expect(find.text('H'), findsOneWidget);
+  expect(find.text('MERCURY\nBooking'), findsOneWidget);
 });
 }
