@@ -7,15 +7,16 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mercury_app/Home/home.dart';
-
-import 'package:mercury_app/main.dart';
 
 void main() {
   testWidgets('finds a Text widget', (tester) async {
   // Build an App with a Text widget that displays the letter 'H'.
   await tester.pumpWidget(const MaterialApp(
-    home: HomeStart()
+    home: Scaffold(
+      body: Center(
+        child: Text("MERCURY\nBooking"),
+      )
+    )
   ));
 
   // Find a widget that displays the letter 'H'.
