@@ -62,7 +62,7 @@ flutter:
   assets:
     - lib/Images/background.jpg
     - lib/Images/paypal.png
-    - lib/Images/wise.jpg
+    - lib/Images/wise.png
     - lib/Images/bank.png
   #   - images/a_dot_ham.jpeg
 

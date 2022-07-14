@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../Destination/destination.dart';
+
 class HomeStart extends StatefulWidget {
   const HomeStart({Key? key}) : super(key: key);
 
@@ -14,7 +16,11 @@ class _HomeStartState extends State<HomeStart> {
     return Scaffold(
         backgroundColor: const Color(0xff191C25),
         body: Container(
-          decoration: const BoxDecoration(image: DecorationImage(image: AssetImage("lib/Images/background.jpg"), fit: BoxFit.cover, opacity: 0.2)),
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("lib/Images/background.jpg"),
+                  fit: BoxFit.cover,
+                  opacity: 0.2)),
           alignment: Alignment.center,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -48,12 +54,14 @@ class _HomeStartState extends State<HomeStart> {
                 ),
               ),
               Container(
+                width: double.infinity,
                 margin: const EdgeInsets.only(top: 32),
                 child: Padding(
                   padding: const EdgeInsets.all(32.0),
                   child: ElevatedButton(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(const Color(0xffe9bd44)),
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          const Color(0xffe9bd44)),
                       shape: MaterialStateProperty.all(
                         RoundedRectangleBorder(
                           // Change your radius here
@@ -61,10 +69,14 @@ class _HomeStartState extends State<HomeStart> {
                         ),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const DestinationPage()));
+                    },
                     child: Container(
-                      margin: const EdgeInsets.only(
-                          left: 32, right: 32, top: 16, bottom: 16),
+                      margin: const EdgeInsets.only(top: 16, bottom: 16),
                       child: Text(
                         "EMPEZAR",
                         style: GoogleFonts.roboto(

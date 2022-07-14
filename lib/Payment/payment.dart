@@ -16,10 +16,11 @@ class _PaymentPageState extends State<PaymentPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor('1E1E1E'),
+      backgroundColor: const Color(0xff191C25),
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: HexColor('1E1E1E'),
+        backgroundColor: const Color(0xff191C25),
+        foregroundColor: const Color(0xfff2f2f2),
         actions: [
           Padding(
             padding: const EdgeInsets.fromLTRB(0.0, 0.0, 5.0, 0.0),
@@ -37,16 +38,16 @@ class _PaymentPageState extends State<PaymentPage> {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                "\$${'180.00'}", //aqui va $widget.precio
+                "\$${'180.00'}", //aqui va $variable.precio
                 style: GoogleFonts.roboto(
-                    color: HexColor('E9BD44'), fontWeight: FontWeight.bold),
+                    color: HexColor('E9BD44'), fontWeight: FontWeight.bold, fontSize: 20),
               ),
             ),
           )
         ],
       ),
       body: Container(
-        decoration: BoxDecoration(color: HexColor('1E1E1E')),
+        alignment: Alignment.center,
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -88,6 +89,7 @@ class _PaymentPageState extends State<PaymentPage> {
                         Padding(
                           padding: EdgeInsets.fromLTRB(0.0, 0.0, 10.0, 0.0),
                           child: Icon(
+                            color: Color(0xff003087),
                             Icons.paypal,
                             size: 35,
                           ),
@@ -126,8 +128,9 @@ class _PaymentPageState extends State<PaymentPage> {
                         ),
                         Padding(
                           padding: EdgeInsets.fromLTRB(0.0, 0.0, 10.0, 0.0),
-                          child: Icon(
-                            Icons.payment,
+                          child: ImageIcon(
+                            color: Color(0xff00b9ff),
+                            AssetImage('lib/Images/wise.png'),
                             size: 35,
                           ),
                         ),
@@ -159,8 +162,9 @@ class _PaymentPageState extends State<PaymentPage> {
                         ),
                         Padding(
                           padding: EdgeInsets.fromLTRB(0.0, 0.0, 10.0, 0.0),
-                          child: Icon(
-                            Icons.business_center,
+                          child: ImageIcon(
+                            color: Color(0xff2a593f),
+                            AssetImage('lib/Images/bank.png'),
                             size: 35,
                           ),
                         ),
