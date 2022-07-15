@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mercury_app/Providers/providerHotel.dart';
+import 'package:mercury_app/Providers/_providerhotel.dart';
 import 'package:provider/provider.dart';
 
 class HotelsList extends StatefulWidget {

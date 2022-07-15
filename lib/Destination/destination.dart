@@ -3,7 +3,7 @@ import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:mercury_app/Models/_destino.dart';
-import 'package:mercury_app/Providers/providerHotel.dart';
+import 'package:mercury_app/Providers/_providerhotel.dart';
 import 'package:mercury_app/apis/_destinoapi.dart';
 import 'package:provider/provider.dart';
 
