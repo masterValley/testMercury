@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 class DestinoApi {
   static Future<List<Destino>> getDestinosSuggestions(String query) async {
     final url = Uri.parse(
-        'http://ws.api.location-world.com/Location.ashx?function=GetCitiesContains&prefix=$query&token=8008DC45EF07DEF012A39B88F5DDDCEF74E80FF0');
+        'https://ws.api.location-world.com/Location.ashx?function=GetCitiesContains&prefix=$query&token=8008DC45EF07DEF012A39B88F5DDDCEF74E80FF0');
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
