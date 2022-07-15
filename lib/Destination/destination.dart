@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:mercury_app/Models/_destino.dart';
 import 'package:mercury_app/apis/_destinoapi.dart';
 
@@ -13,9 +14,11 @@ class DestinationPage extends StatefulWidget {
 
 class _DestinationPageState extends State<DestinationPage> {
   String destinoName = 'Destino';
+  String fechaLlegadaText = 'Fecha de llegada';
+  DateTime _fechaLlegada = DateTime.now();
+  String fechaSalidaText = 'Fecha de salida';
+  DateTime _fechaSalida = DateTime.now();
   TextEditingController destinoController = TextEditingController();
-  TextEditingController salidaController = TextEditingController();
-  TextEditingController llegadaController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,8 +71,8 @@ class _DestinationPageState extends State<DestinationPage> {
                           top: 8, bottom: 8, left: 16, right: 16),
                       child: TypeAheadField<Destino?>(
                         textFieldConfiguration: TextFieldConfiguration(
-                          minLines: 1,
-                          maxLines: 2,
+                            minLines: 1,
+                            maxLines: 2,
                             style: GoogleFonts.roboto(
                                 fontWeight: FontWeight.w300,
                                 fontSize: 20,
@@ -101,7 +104,6 @@ class _DestinationPageState extends State<DestinationPage> {
                           final destino = suggestion!;
                           destinoController.text = destino.name;
                           destinoName = destinoController.text;
-                          print(destinoName);
                         },
                         noItemsFoundBuilder: (context) => const Center(
                             child: Text('No se encontró el destino')),
@@ -147,13 +149,64 @@ class _DestinationPageState extends State<DestinationPage> {
                                   child: SizedBox(
                                     height: 60,
                                     child: Center(
-                                      child: Text(
-                                        'Fecha de llegada',
-                                        style: GoogleFonts.roboto(
-                                            fontWeight: FontWeight.w300,
-                                            fontSize: 20,
-                                            color: const Color(0xff191c25)),
-                                      ),
+                                      child: TextButton(
+                                          child: Text(
+                                            fechaLlegadaText,
+                                            style: GoogleFonts.roboto(
+                                                fontWeight: FontWeight.w300,
+                                                fontSize: 20,
+                                                color: const Color(0xff191c25)),
+                                          ),
+                                          onPressed: () {
+                                            showDatePicker(
+                                              context: context,
+                                              initialDate: DateTime.now(),
+                                              firstDate: DateTime.now(),
+                                              lastDate: DateTime(2025),
+                                              helpText:
+                                                  'Seleccionar fecha de llegada', // Can be used as title
+                                              cancelText: 'Cancelar',
+                                              confirmText: 'Seleccionar',
+                                              initialEntryMode:
+                                                  DatePickerEntryMode
+                                                      .calendarOnly,
+                                              builder: (context, child) {
+                                                return Theme(
+                                                  data: Theme.of(context)
+                                                      .copyWith(
+                                                    colorScheme:
+                                                        const ColorScheme.light(
+                                                      primary: Color(
+                                                          0xffe9bd44), // header background color
+                                                      onPrimary: Color(
+                                                          0xff191c25), // header text color
+                                                      onSurface: Color(
+                                                          0xff191c25), // body text color
+                                                    ),
+                                                    textButtonTheme:
+                                                        TextButtonThemeData(
+                                                      style: TextButton.styleFrom(
+                                                          textStyle: GoogleFonts
+                                                              .roboto(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                  fontSize: 16),
+                                                          primary: const Color(
+                                                              0xff191c25) // button text color
+                                                          ),
+                                                    ),
+                                                  ),
+                                                  child: child!,
+                                                );
+                                              },
+                                            ).then((date) {
+                                              setState(() {
+                                                _fechaLlegada = date!;
+                                                fechaLlegadaText = DateFormat.yMMMd().format(_fechaLlegada).toString();
+                                              });
+                                            });
+                                          }),
                                     ),
                                   ))
                             ],
@@ -189,16 +242,68 @@ class _DestinationPageState extends State<DestinationPage> {
                                   padding: const EdgeInsets.only(
                                       top: 8, bottom: 8, left: 16, right: 16),
                                   child: SizedBox(
-                                      height: 60,
-                                      child: Center(
-                                        child: Text(
-                                          'Fecha de salida',
-                                          style: GoogleFonts.roboto(
-                                              fontWeight: FontWeight.w300,
-                                              fontSize: 20,
-                                              color: const Color(0xff191c25)),
-                                        ),
-                                      )))
+                                    height: 60,
+                                    child: Center(
+                                      child: TextButton(
+                                          child: Text(
+                                            fechaSalidaText,
+                                            style: GoogleFonts.roboto(
+                                                fontWeight: FontWeight.w300,
+                                                fontSize: 20,
+                                                color: const Color(0xff191c25)),
+                                          ),
+                                          onPressed: () {
+                                            showDatePicker(
+                                              context: context,
+                                              initialDate: DateTime.now(),
+                                              firstDate: DateTime.now(),
+                                              lastDate: DateTime(2025),
+                                              helpText:
+                                                  'Seleccionar fecha de Salida', // Can be used as title
+                                              cancelText: 'Cancelar',
+                                              confirmText: 'Seleccionar',
+                                              initialEntryMode:
+                                                  DatePickerEntryMode
+                                                      .calendarOnly,
+                                              builder: (context, child) {
+                                                return Theme(
+                                                  data: Theme.of(context)
+                                                      .copyWith(
+                                                    colorScheme:
+                                                        const ColorScheme.light(
+                                                      primary: Color(
+                                                          0xffe9bd44), // header background color
+                                                      onPrimary: Color(
+                                                          0xff191c25), // header text color
+                                                      onSurface: Color(
+                                                          0xff191c25), // body text color
+                                                    ),
+                                                    textButtonTheme:
+                                                        TextButtonThemeData(
+                                                      style: TextButton.styleFrom(
+                                                          textStyle: GoogleFonts
+                                                              .roboto(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                  fontSize: 16),
+                                                          primary: const Color(
+                                                              0xff191c25) // button text color
+                                                          ),
+                                                    ),
+                                                  ),
+                                                  child: child!,
+                                                );
+                                              },
+                                            ).then((date) {
+                                              setState(() {
+                                                _fechaSalida = date!;
+                                                fechaSalidaText = DateFormat.yMMMd().format(_fechaSalida).toString();
+                                              });
+                                            });
+                                          }),
+                                    ),
+                                  ))
                             ],
                           ),
                         ),
@@ -221,7 +326,11 @@ class _DestinationPageState extends State<DestinationPage> {
                             ),
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          debugPrint(destinoName);
+                          debugPrint(_fechaLlegada.toString());
+                          debugPrint(_fechaSalida.toString());                          
+                        },
                         child: Container(
                           margin: const EdgeInsets.only(top: 16, bottom: 16),
                           child: Text(
