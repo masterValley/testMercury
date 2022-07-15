@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mercury_app/Home/home.dart';
 import 'package:provider/provider.dart';
 
-import 'Providers/providerHotel.dart';
+import 'Providers/_providerhotel.dart';
 
 void main() {
   runApp(const MyApp());
