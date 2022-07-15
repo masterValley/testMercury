@@ -3,7 +3,11 @@ import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:mercury_app/Models/_destino.dart';
+import 'package:mercury_app/Providers/providerHotel.dart';
 import 'package:mercury_app/apis/_destinoapi.dart';
+import 'package:provider/provider.dart';
+
+import '../Hotels/hotels.dart';
 
 class DestinationPage extends StatefulWidget {
   const DestinationPage({Key? key}) : super(key: key);
@@ -203,7 +207,10 @@ class _DestinationPageState extends State<DestinationPage> {
                                             ).then((date) {
                                               setState(() {
                                                 _fechaLlegada = date!;
-                                                fechaLlegadaText = DateFormat.yMMMd().format(_fechaLlegada).toString();
+                                                fechaLlegadaText =
+                                                    DateFormat.yMMMd()
+                                                        .format(_fechaLlegada)
+                                                        .toString();
                                               });
                                             });
                                           }),
@@ -298,7 +305,10 @@ class _DestinationPageState extends State<DestinationPage> {
                                             ).then((date) {
                                               setState(() {
                                                 _fechaSalida = date!;
-                                                fechaSalidaText = DateFormat.yMMMd().format(_fechaSalida).toString();
+                                                fechaSalidaText =
+                                                    DateFormat.yMMMd()
+                                                        .format(_fechaSalida)
+                                                        .toString();
                                               });
                                             });
                                           }),
@@ -329,7 +339,14 @@ class _DestinationPageState extends State<DestinationPage> {
                         onPressed: () {
                           debugPrint(destinoName);
                           debugPrint(_fechaLlegada.toString());
-                          debugPrint(_fechaSalida.toString());                          
+                          debugPrint(_fechaSalida.toString());
+                          Provider.of<HotelProvider>(context, listen: false)
+                              .setValues(
+                                  destinoName, _fechaLlegada, _fechaSalida);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const HotelsList()));
                         },
                         child: Container(
                           margin: const EdgeInsets.only(top: 16, bottom: 16),
