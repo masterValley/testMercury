@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Mercury Booking',
         theme: ThemeData(),
-        home: const HomeStart(),
+        home: const HomeStart() ,
       ),
     );
   }
