@@ -6,15 +6,27 @@ class HotelProvider with ChangeNotifier {
   late String destino;
   late DateTime start, end;
 
+  late int startTS, endTS;
   void setValues(String destino, DateTime start, DateTime end) {
     start = start;
     end = end;
     destino = destino;
     hotel = Hotel(destino, start, end);
+    startTS = start.millisecondsSinceEpoch;
+    endTS = start.millisecondsSinceEpoch;
     notifyListeners();
   }
 
-  Hotel get getHotels{
+  Hotel get getHotels {
     return hotel;
+  }
+
+  int get getstart {
+    return startTS;
+  }
+
+  
+  int get getend {
+    return endTS;
   }
 }

@@ -13,13 +13,17 @@ class _HotelsListState extends State<HotelsList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: const Color(0xff191C25),
+          foregroundColor: const Color(0xfff2f2f2),
+        ),
         body: Center(
           child: Consumer<HotelProvider>(
             builder: (context, HotelProvider data, child) {
               return Center(
                   child: Text(
-                      "${data.getHotels.destino} ${data.getHotels.start} ${data.getHotels.end}"));
+                      "${data.getHotels.destino} ${data.getHotels.start} ${data.getHotels.end} ${data.getstart} ${data.getend}"));
             },
           ),
         ));
