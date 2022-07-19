@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mercury_app/Home/home.dart';
+import 'package:provider/provider.dart';
+
+import 'Providers/_providerhotel.dart';
 
 import 'Payment/WisePay/wise_pay.dart';
 
@@ -13,14 +16,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Mercury Booking',
-      theme: ThemeData(
-        
+    return ChangeNotifierProvider(
+      create: (context) => HotelProvider(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Mercury Booking',
+        theme: ThemeData(),
+        home: const HomeStart(),
       ),
-      home: const HomeStart(),
     );
   }
 }
-
