@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mercury_app/Home/home.dart';
 
+import 'Payment/WisePay/wise_pay.dart';
+
 void main() {
   runApp(const MyApp());
 }
