@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mercury_app/Home/home.dart';
+import 'package:mercury_app/Providers/_provideruser.dart';
 import 'package:provider/provider.dart';
 
 import 'Providers/_providerhotel.dart';
 
-import 'Payment/WisePay/wise_pay.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,8 +16,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => HotelProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => HotelProvider()),
+        ChangeNotifierProvider(create: (context) => UserProvider())
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Mercury Booking',
