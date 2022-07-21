@@ -40,7 +40,7 @@ class _PaymentPageState extends State<PaymentPage> {
               child: Text(
                 "\$${'180.00'}", //aqui va $variable.precio
                 style: GoogleFonts.roboto(
-                    color: HexColor('E9BD44'), fontWeight: FontWeight.bold, fontSize: 20),
+                    color: HexColor('#E9BD44'), fontWeight: FontWeight.bold, fontSize: 20),
               ),
             ),
           )
