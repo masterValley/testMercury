@@ -34,7 +34,7 @@ class _HotelsListState extends State<HotelsList> {
           title: Row(
             children: [
               Text(
-                'Hoteles disponibles en: ',
+                'Destino: ',
                 style: GoogleFonts.roboto(
                     fontSize: 20,
                     fontWeight: FontWeight.w300,
