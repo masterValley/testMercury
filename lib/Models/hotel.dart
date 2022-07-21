@@ -1,7 +1,22 @@
+
+
 class Hotel {
-  final String destino;
+  
+  final String id;
+  final String calles;
+  final String imagen;
+  final String nombre;
 
-  final DateTime start, end;
+  const Hotel(
+      {required this.nombre,
+      required this.calles,
+      required this.id,
+      required this.imagen});
 
-  Hotel(this.destino, this.start, this.end);
+  static Hotel fromJson(Map<String, dynamic> json) => Hotel(
+      nombre: json['nombre'],
+      calles: json['calles'],
+      id: json['id'],
+      imagen: json['imagen'],
+    );
 }
