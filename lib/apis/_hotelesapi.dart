@@ -7,13 +7,8 @@ import 'dart:convert';
 class HotelesApi {
   Future<List<Hotel>> getHotelCity(String query) async {
     debugPrint("Llamada a la api con destino: $query");
-    var response = await http.get(
-        Uri.parse(
-            'https://us-central1-fb-api-d1076.cloudfunctions.net/hoteles/getHotelByLocation/$query'),
-        headers: {
-          'Content-Type': 'application/json',
-          "Access-Control-Allow-Origin": "*",
-        });
+    var response = await http.get(Uri.parse(
+        'https://us-central1-fb-api-d1076.cloudfunctions.net/hoteles/getHotelByLocation/$query'));
     var jsonData = json.decode(response.body);
 
     List<Hotel> hoteles = [];
