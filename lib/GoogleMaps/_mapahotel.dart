@@ -56,7 +56,7 @@ class _HotelLocationState extends State<HotelLocation> {
       body: GoogleMap(
         initialCameraPosition: positionHotel,
         markers: markers,
-        zoomControlsEnabled: false,
+        zoomControlsEnabled: true,
         mapType: MapType.normal,
         onMapCreated: (GoogleMapController controller) {
           googleMapController:
