@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mercury_app/Hotel/hotelinfo.dart';
 import 'package:mercury_app/Models/hotel.dart';
+import 'package:mercury_app/Providers/_providerhotelinfo.dart';
+import 'package:provider/provider.dart';
 
 class HotelItem extends StatelessWidget {
   const HotelItem({Key? key, required this.hotel}) : super(key: key);
@@ -46,7 +49,7 @@ class HotelItem extends StatelessWidget {
                     color: const Color(0xfff2f2f2)),
               ),
               subtitle: Container(
-                margin: const EdgeInsets.only(top:8),
+                margin: const EdgeInsets.only(top: 8),
                 child: Text(
                   hotel.calles,
                   style: GoogleFonts.roboto(
@@ -55,6 +58,16 @@ class HotelItem extends StatelessWidget {
                       color: const Color(0xfff2f2f2)),
                 ),
               ),
+              trailing: IconButton(
+                  onPressed: () {
+                    Provider.of<HotelInfoProvider>(context, listen: false)
+                        .setValues(hotel.id);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HotelInfoView()));
+                  },
+                  icon: const Icon(Icons.arrow_right, color: Color(0xfff2f2f2), size: 40)),
             ),
           ),
         )

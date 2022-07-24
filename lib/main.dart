@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mercury_app/Home/home.dart';
+import 'package:mercury_app/Providers/_providerhotelinfo.dart';
 import 'package:mercury_app/Providers/_provideruser.dart';
 import 'package:provider/provider.dart';
 
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => HotelProvider()),
+        ChangeNotifierProvider(create: (context) => HotelInfoProvider()),
         ChangeNotifierProvider(create: (context) => UserProvider())
       ],
       child: MaterialApp(
