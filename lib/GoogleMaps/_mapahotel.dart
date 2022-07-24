@@ -21,19 +21,17 @@ class _HotelLocationState extends State<HotelLocation> {
     markers = {};
     hotelInfoProvider = Provider.of<HotelInfoProvider>(context, listen: false);
     positionHotel = CameraPosition(
-        target: LatLng(hotelInfoProvider.getHotel.coordenadas.latitud,
-            hotelInfoProvider.getHotel.coordenadas.logitud));
+        target: LatLng(hotelInfoProvider.getHotel.coordenadas.logitud,
+            hotelInfoProvider.getHotel.coordenadas.latitud));
+    markers.add(Marker(
+          markerId: MarkerId(hotelInfoProvider.getHotel.nombre.toString()),
+          position: LatLng(hotelInfoProvider.getHotel.coordenadas.logitud,
+            hotelInfoProvider.getHotel.coordenadas.latitud)));
     debugPrint('${hotelInfoProvider.getHotel.coordenadas.latitud}');
   }
 
   @override
   Widget build(BuildContext context) {
-    setState(() {
-      markers.add(Marker(
-          markerId: MarkerId(hotelInfoProvider.getHotel.nombre.toString()),
-          position: LatLng(hotelInfoProvider.getHotel.coordenadas.latitud,
-              hotelInfoProvider.getHotel.coordenadas.logitud)));
-    });
     //Text('${hotelInfoProvider.getHotel.coordenadas.latitud} y ${hotelInfoProvider.getHotel.coordenadas.logitud} y ${hotelInfoProvider.getHotel.calles}');
     return Scaffold(
       appBar: AppBar(
