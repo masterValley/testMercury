@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mercury_app/GoogleMaps/_mapahotel.dart';
+import 'package:mercury_app/Habitaciones/listrooms.dart';
 import 'package:mercury_app/Models/hoteldata.dart';
 import 'package:mercury_app/Providers/_providerhotelinfo.dart';
 import 'package:mercury_app/apis/_hotelapi.dart';
@@ -14,7 +15,7 @@ class HotelInfoView extends StatefulWidget {
 }
 
 class _HotelInfoViewState extends State<HotelInfoView> {
-  late Future<HotelInfo> hotelInfo;
+  late final Future<HotelInfo> hotelInfo;
   HotelApiInfo hotelApi = HotelApiInfo();
   late final hotelInfoProvider;
 
@@ -157,7 +158,13 @@ class _HotelInfoViewState extends State<HotelInfoView> {
                                         ),
                                       ),
                                     ),
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const RoomList()));
+                                    },
                                     child: Container(
                                       margin: const EdgeInsets.only(
                                           top: 16, bottom: 16),

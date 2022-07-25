@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mercury_app/Models/dataContainer.dart';
 
 class HotelProvider with ChangeNotifier {
-late ContainerData container;
+  late ContainerData container;
 
   late int startTS, endTS;
   void setValues(String destino, DateTime start, DateTime end) {
@@ -11,7 +11,9 @@ late ContainerData container;
     destino = destino;
     startTS = start.millisecondsSinceEpoch;
     endTS = start.millisecondsSinceEpoch;
-    container = ContainerData(destino, startTS, endTS);
+    int dayBetween = end.difference(start).inDays;
+    container = ContainerData(destino, startTS, endTS, dayBetween);
+    debugPrint('Diferencia de días: ${container.dayBetween}');
     notifyListeners();
   }
 
@@ -27,4 +29,7 @@ late ContainerData container;
     return container.end;
   }
 
+  int get getdays {
+    return container.dayBetween;
+  }
 }

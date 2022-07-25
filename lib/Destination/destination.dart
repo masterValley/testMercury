@@ -262,8 +262,8 @@ class _DestinationPageState extends State<DestinationPage> {
                                           onPressed: () {
                                             showDatePicker(
                                               context: context,
-                                              initialDate: DateTime.now(),
-                                              firstDate: DateTime.now(),
+                                              initialDate: _fechaLlegada.add(const Duration(days:1)),
+                                              firstDate: _fechaLlegada.add(const Duration(days:1)),
                                               lastDate: DateTime(2025),
                                               helpText:
                                                   'Seleccionar fecha de Salida', // Can be used as title
