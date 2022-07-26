@@ -98,6 +98,23 @@ class _AvailableRoomState extends State<AvailableRoom> {
                         fontWeight: FontWeight.w500,
                         color: const Color(0xff191c25)),
                   ),
+                ),ListTile(
+                  title: Text(
+                    'TAMAÑO: ',
+                    style: GoogleFonts.leagueGothic(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w700,
+                        color: const Color(0xffE9BD44)),
+                  ),
+                ),
+                ListTile(
+                  title: Text(
+                    '${widget.habitacion.tamao} metros cuadradros',
+                    style: GoogleFonts.roboto(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: const Color(0xff191c25)),
+                  ),
                 ),
                 ListTile(
                   title: Text(
