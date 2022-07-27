@@ -47,7 +47,7 @@ class Reserva {
       nombreHotel: json["nombreHotel"]);
 
   Map toMap() {
-    var map = {};
+    Map<String, dynamic> map = {};
     map["id"] = codigoReserva;
     map['codigoReserva'] = codigoReserva;
     map['nombreHabitacion'] = nombre;

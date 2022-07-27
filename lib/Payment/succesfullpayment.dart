@@ -33,7 +33,6 @@ class _SuccesfullPaymentState extends State<SuccesfullPayment> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     reservaGuardadaProvider = Provider.of<RoomProvider>(context, listen: false);
     userGuardadoProvider = Provider.of<UserProvider>(context, listen: false);
@@ -43,7 +42,8 @@ class _SuccesfullPaymentState extends State<SuccesfullPayment> {
     hotelContainterProvider =
         Provider.of<HotelProvider>(context, listen: false);
 
-    Provider.of<ProviderReserva>(context, listen: false).setIdReserva(reservaRegistrada.getReserva);
+    Provider.of<ProviderReserva>(context, listen: false)
+        .setIdReserva(reservaRegistrada.getReserva);
   }
 
   @override
@@ -96,7 +96,8 @@ class _SuccesfullPaymentState extends State<SuccesfullPayment> {
                       correoCliente: userGuardadoProvider.getUser.email,
                       diasReserva: hotelContainterProvider.getdays,
                       estado: "Reservado",
-                      fechaEntrada: reservaGuardadaProvider.getDaysFormatLlegada,
+                      fechaEntrada:
+                          reservaGuardadaProvider.getDaysFormatLlegada,
                       fechaSalida: reservaGuardadaProvider.getDaysFormatSalida,
                       nombreCliente: userGuardadoProvider.getUser.names +
                           userGuardadoProvider.getUser.lastNames,
