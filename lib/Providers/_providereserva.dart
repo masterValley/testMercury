@@ -49,7 +49,7 @@ class ProviderReserva with ChangeNotifier {
     return reserva.codigoReserva;
   }
 
-  Reserva get getReserva{
+  Reserva get getReserva {
     return reserva;
   }
 }
