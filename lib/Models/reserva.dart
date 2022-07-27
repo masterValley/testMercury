@@ -1,9 +1,9 @@
 class Reserva {
-  final String codigoReserva; //
+  final int id; //
   final String nombre; //
   final int precio; //
   final int numeroCamas; //
-  final int tamao; //
+  final String tamao; //
   final String numeroHabitacion; //
   final int capacidad; //
   final String correoCliente; //
@@ -12,10 +12,12 @@ class Reserva {
   final int fechaEntrada; //
   final int fechaSalida; //
   final String nombreCliente; //
-  final String nombreHotel; //
+  final String nombreHotel; 
+  final String codigoReserva;
 
   const Reserva(
-      {required this.codigoReserva,
+      {
+      required this.id,
       required this.nombre,
       required this.precio,
       required this.numeroCamas,
@@ -28,32 +30,36 @@ class Reserva {
       required this.fechaEntrada,
       required this.fechaSalida,
       required this.nombreCliente,
+      required this.codigoReserva,
       required this.nombreHotel});
 
-  static Reserva fromJson(Map<String, dynamic> json) => Reserva(
+  factory Reserva.fromJson(Map<String, dynamic> json) {
+    print(json);
+    return Reserva(
+      nombre: json['nombreHabitacion'],
+      id : json['id'] ?? 1010,
+      precio: json['precio'],
+      numeroCamas: json['camas'],
+      tamao: json['tamanioHabitacion'],
+      numeroHabitacion: json['numeroHabitacion'],
+      capacidad: json['capacidad'],
+      correoCliente: json['correoCliente'],
+      diasReserva: json['diasReserva'],
+      estado: json['estado'],
+      fechaEntrada: json['fechaEntrada'],
+      fechaSalida: json['fechaSalida'],
+      nombreCliente: json['nombreCliente'],
       codigoReserva: json['codigoReserva'],
-      nombre: json["nombreHabitacion"],
-      precio: json["precio"],
-      numeroCamas: json["camas"],
-      tamao: json["tamañoHabitacion"],
-      numeroHabitacion: json["numeroHabitacion"],
-      capacidad: json["capacidad"],
-      correoCliente: json["correoCliente"],
-      diasReserva: json["diasReserva"],
-      estado: json["estado"],
-      fechaEntrada: json["fechaEntrada"],
-      fechaSalida: json["fechaSalida"],
-      nombreCliente: json["nombreCliente"],
-      nombreHotel: json["nombreHotel"]);
+      nombreHotel: json['nombreHotel']);
+  } 
 
   Map toMap() {
     Map<String, dynamic> map = {};
-    map["id"] = codigoReserva;
-    map['codigoReserva'] = codigoReserva;
     map['nombreHabitacion'] = nombre;
+    map['id'] = id;
     map['precio'] = precio;
     map['camas'] = numeroCamas;
-    map['tamañoHabitacion'] = tamao;
+    map['tamanioHabitacion'] = tamao;
     map['numeroHabitacion'] = numeroHabitacion;
     map['capacidad'] = capacidad;
     map['correoCliente'] = correoCliente;
@@ -62,6 +68,7 @@ class Reserva {
     map['fechaEntrada'] = fechaEntrada;
     map['fechaSalida'] = fechaSalida;
     map['nombreCliente'] = nombreCliente;
+    map['codigoReserva'] = codigoReserva;
     map['nombreHotel'] = nombreHotel;
     return map;
   }

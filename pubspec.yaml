@@ -46,6 +46,10 @@ dependencies:
   geolocator: ^9.0.1
   firebase_crashlytics: ^2.8.6
   firebase_core: ^1.20.0
+  syncfusion_flutter_pdf: ^20.2.40
+  open_file: ^3.2.1
+  path_provider: ^2.0.11
+  cloud_firestore: ^3.4.1
 
 dev_dependencies:
   flutter_test:

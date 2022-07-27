@@ -14,6 +14,8 @@ class HotelProvider with ChangeNotifier {
     int dayBetween = end.difference(start).inDays;
     container = ContainerData(destino, startTS, endTS, dayBetween);
     debugPrint('Diferencia de días: ${container.dayBetween}');
+    debugPrint('llegada: ${container.start}');
+    debugPrint('salida: ${container.end}');
     notifyListeners();
   }
 
@@ -22,10 +24,12 @@ class HotelProvider with ChangeNotifier {
   }
 
   int get getstart {
+    print(container.start);
     return container.start;
   }
 
   int get getend {
+    print(container.start);
     return container.end;
   }
 

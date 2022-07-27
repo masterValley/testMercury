@@ -93,23 +93,24 @@ class _PaymentPageState extends State<PaymentPage> {
                   onTap: () {
                     Provider.of<ProviderReserva>(context, listen: false)
                         .setReserva(Reserva(
-                      codigoReserva: _providerHabitacion.getRoom.id,
                       nombre: _providerHabitacion.getRoom.nombre,
+                      id: _providerContainer.getend+_providerContainer.getstart+int.parse(_providerUser.getUser.CI),
                       precio: _providerHabitacion.getRoom.precio,
                       numeroCamas: _providerHabitacion.getRoom.numeroCamas,
-                      tamao: _providerHabitacion.getRoom.tamao,
+                      tamao: _providerHabitacion.getRoom.tamao.toString(),
                       numeroHabitacion:
-                          _providerHabitacion.getRoom.numeroHabitacion,
+                          _providerHabitacion.getRoom.numeroHabitacion.toString(),
                       capacidad: _providerHabitacion.getRoom.capacidad,
-                      correoCliente: _providerUser.getUser.email,
+                      correoCliente: _providerUser.getUser.email.toString(),
                       diasReserva: _providerContainer.getdays,
                       estado: "vacio",
                       fechaEntrada: _providerContainer.getstart,
                       fechaSalida: _providerContainer.getend,
-                      nombreCliente: _providerUser.getUser.names +
-                          _providerUser.getUser.lastNames,
+                      nombreCliente: '${_providerUser.getUser.names.toString()} ${_providerUser.getUser.lastNames}',
+                      codigoReserva: '${_providerContainer.getstart.toString()}${_providerContainer.getend.toString()}${_providerUser.getUser.CI}',
                       nombreHotel: _providerHotels.getHotel.nombre,
                     ));
+                    print(_providerContainer.getstart.toString() +" otro " + _providerContainer.getend.toString());
                     Navigator.push(
                         context,
                         MaterialPageRoute(

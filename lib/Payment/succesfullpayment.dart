@@ -23,11 +23,12 @@ class SuccesfullPayment extends StatefulWidget {
 }
 
 class _SuccesfullPaymentState extends State<SuccesfullPayment> {
-  late final reservaGuardadaProvider;
-  late final userGuardadoProvider;
-  late final hotelGuardarProvider;
+
   late final reservaRegistrada;
+  late final userGuardadoProvider;
   late final hotelContainterProvider;
+  late final hotelGuardarProvider;
+  late final reservaGuardadaProvider;
 
   final ReservasApi reservasApi = ReservasApi();
 
@@ -36,14 +37,11 @@ class _SuccesfullPaymentState extends State<SuccesfullPayment> {
     super.initState();
     reservaGuardadaProvider = Provider.of<RoomProvider>(context, listen: false);
     userGuardadoProvider = Provider.of<UserProvider>(context, listen: false);
-    hotelGuardarProvider =
-        Provider.of<HotelInfoProvider>(context, listen: false);
+    hotelGuardarProvider = Provider.of<HotelInfoProvider>(context, listen: false);
     reservaRegistrada = Provider.of<ProviderReserva>(context, listen: false);
-    hotelContainterProvider =
-        Provider.of<HotelProvider>(context, listen: false);
+    hotelContainterProvider = Provider.of<HotelProvider>(context, listen: false);
 
-    Provider.of<ProviderReserva>(context, listen: false)
-        .setIdReserva(reservaRegistrada.getReserva);
+    //Provider.of<ProviderReserva>(context, listen: false).setIdReserva(reservaRegistrada.getReserva);
   }
 
   @override
@@ -84,26 +82,9 @@ class _SuccesfullPaymentState extends State<SuccesfullPayment> {
                   ),
                 ),
                 onPressed: () {
-                  Reserva reserva = Reserva(
-                      codigoReserva: reservaGuardadaProvider.idReserva,
-                      nombre: reservaGuardadaProvider.getRoom.nombre,
-                      precio: reservaGuardadaProvider.getRoom.precio,
-                      numeroCamas: reservaGuardadaProvider.getRoom.numeroCamas,
-                      tamao: reservaGuardadaProvider.getRoom.tamao,
-                      numeroHabitacion:
-                          reservaGuardadaProvider.getRoom.numeroHabitacion,
-                      capacidad: reservaGuardadaProvider.getRoom.capacidad,
-                      correoCliente: userGuardadoProvider.getUser.email,
-                      diasReserva: hotelContainterProvider.getdays,
-                      estado: "Reservado",
-                      fechaEntrada:
-                          reservaGuardadaProvider.getDaysFormatLlegada,
-                      fechaSalida: reservaGuardadaProvider.getDaysFormatSalida,
-                      nombreCliente: userGuardadoProvider.getUser.names +
-                          userGuardadoProvider.getUser.lastNames,
-                      nombreHotel: hotelGuardarProvider.getHotel.nombre);
-                  ReservasApi.createReserva(hotelGuardarProvider.getIDHotel,
-                      reservaGuardadaProvider.getRoom.id, reserva.toMap());
+                  
+                  //reservasApi.createReserva(hotelGuardarProvider.getIDHotel, reservaGuardadaProvider.getRoom.id, reserva.toMap());
+                  reservasApi.postData(hotelGuardarProvider.getIDHotel, reservaGuardadaProvider.getRoom.id, reservaRegistrada, hotelContainterProvider);
                   Navigator.push(
                       context,
                       MaterialPageRoute(

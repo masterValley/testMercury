@@ -6,6 +6,7 @@ import 'package:mercury_app/Providers/_providerhabitacion.dart';
 import 'package:mercury_app/Providers/_providerhotel.dart';
 import 'package:mercury_app/Providers/_providerhotelinfo.dart';
 import 'package:mercury_app/Providers/_provideruser.dart';
+import 'package:mercury_app/Reserva/pantallafinal.dart';
 import 'package:provider/provider.dart';
 
 class ResumenReserva extends StatefulWidget {
@@ -77,8 +78,8 @@ class _ResumenReservaState extends State<ResumenReserva> {
               ),
             ],
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
                 padding: const EdgeInsets.fromLTRB(15.0, 10.0, 0.0, 0.0),
@@ -93,7 +94,7 @@ class _ResumenReservaState extends State<ResumenReserva> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 0.0),
                 child: Text(
-                  '${reservaRegistrada.getIdReserva}',
+                  '${reservaRegistrada.getReservaFinal.codigoReserva}',
                   style: GoogleFonts.leagueGothic(
                       fontSize: 22,
                       fontWeight: FontWeight.w500,
@@ -143,7 +144,7 @@ class _ResumenReservaState extends State<ResumenReserva> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 0.0),
                 child: Text(
-                  '${userGuardadoProvider.getUser.names}' + '${userGuardadoProvider.getUser.lastNames}',
+                  '${userGuardadoProvider.getUser.names} ${userGuardadoProvider.getUser.lastNames}',
                   style: GoogleFonts.leagueGothic(
                       fontSize: 22,
                       fontWeight: FontWeight.w500,
@@ -276,6 +277,43 @@ class _ResumenReservaState extends State<ResumenReserva> {
                       color: HexColor("#FFFFFF")),
                 ),
               ),
+              Container(
+            width: double.infinity,
+            margin: const EdgeInsets.only(top: 16),
+            child: Padding(
+              padding: const EdgeInsets.all(32.0),
+              child: ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(const Color(0xffe9bd44)),
+                  shape: MaterialStateProperty.all(
+                    RoundedRectangleBorder(
+                      // Change your radius here
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => FinalPage(valor: widget.valor,)
+                      ));
+                },
+                child: Container(
+                  margin: const EdgeInsets.only(top: 16, bottom: 16),
+                  child: Text(
+                    "Guardar reserva",
+                    style: GoogleFonts.roboto(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 20,
+                        color: const Color(0xff191c25)),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+            ),
+          ),
             ],
           ),
         ],

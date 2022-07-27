@@ -300,12 +300,12 @@ class _ClienteViewState extends State<ClienteView> {
                   ),
                 ),
                 onPressed: () {
-                  User user = new User(names: _names.text, lastNames: _lastNames.text, CI: _CI.text, email: _email.text);
+                  User user = User(names: _names.text, lastNames: _lastNames.text, CI: _CI.text, email: _email.text);
                   userApi.createUser(user.toMap(), hotelGuardarProvider.getIDHotel);
                   Provider.of<UserProvider>(context, listen: false)
                       .setUserValues(
                           _names.text, _lastNames.text, _email.text, _CI.text);
-                  _emailCorrect == true &&
+                          _emailCorrect == true &&
                           _names.text.isNotEmpty &&
                           _lastNames.text.isNotEmpty &&
                           _email.text.isNotEmpty &&
