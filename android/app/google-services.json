@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "150878911402",
+    "project_id": "fb-api-d1076",
+    "storage_bucket": "fb-api-d1076.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:150878911402:android:6b1d2320825ecbf7ab49d3",
+        "android_client_info": {
+          "package_name": "com.mvalleyapps.mercury_booking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "150878911402-9oun6ebd5j4fb06hftpf83g2efr6hfuf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAM5CqJi09MGYey7Ewrs5OrVtLm9KrcgAo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "150878911402-9oun6ebd5j4fb06hftpf83g2efr6hfuf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mercury_app/Models/habitacion.dart';
 import 'package:mercury_app/Providers/_providerhotel.dart';
+import 'package:mercury_app/User/userView.dart';
 import 'package:provider/provider.dart';
 
 class AvailableRoom extends StatefulWidget {
@@ -14,11 +15,15 @@ class AvailableRoom extends StatefulWidget {
 
 class _AvailableRoomState extends State<AvailableRoom> {
   late final reservaProvider;
+  num valor = 0;
 
   @override
   void initState() {
     super.initState();
     reservaProvider = Provider.of<HotelProvider>(context, listen: false);
+    setState(() {
+      valor = widget.habitacion.precio * reservaProvider.getdays;
+    });
   }
 
   @override
@@ -164,7 +169,7 @@ class _AvailableRoomState extends State<AvailableRoom> {
                 ),
                 ListTile(
                   title: Text(
-                    '${widget.habitacion.precio * reservaProvider.getdays} USD POR ${reservaProvider.getdays} DÍA(S)',
+                    '$valor USD POR ${reservaProvider.getdays} DÍA(S)',
                     style: GoogleFonts.leagueGothic(
                         fontSize: 20,
                         fontWeight: FontWeight.w500,
@@ -187,7 +192,9 @@ class _AvailableRoomState extends State<AvailableRoom> {
                           ),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => ClienteView(valor: valor),));
+                      },
                       child: Container(
                         margin: const EdgeInsets.only(top: 16, bottom: 16),
                         child: Text(

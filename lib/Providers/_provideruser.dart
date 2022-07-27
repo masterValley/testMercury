@@ -5,7 +5,7 @@ class UserProvider with ChangeNotifier {
   late User user;
 
   void setUserValues (String names, String lastNames, String email, String CI) {
-    user = User(names, lastNames, email, CI);
+    user = User(names: names, lastNames: lastNames, email: email, CI: CI);
     notifyListeners();
   }
 

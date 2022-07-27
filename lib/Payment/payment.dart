@@ -1,18 +1,40 @@
-// ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:mercury_app/Models/reserva.dart';
 import 'package:mercury_app/Payment/WisePay/wise_pay.dart';
+import 'package:mercury_app/Payment/succesfullpayment.dart';
+import 'package:mercury_app/Providers/_providereserva.dart';
+import 'package:mercury_app/Providers/_providerhabitacion.dart';
+import 'package:mercury_app/Providers/_providerhotel.dart';
+import 'package:mercury_app/Providers/_providerhotelinfo.dart';
+import 'package:mercury_app/Providers/_provideruser.dart';
+import 'package:provider/provider.dart';
 
 class PaymentPage extends StatefulWidget {
-  const PaymentPage({Key? key}) : super(key: key);
+  num valor;
+  PaymentPage({required this.valor, Key? key}) : super(key: key);
 
   @override
   State<PaymentPage> createState() => _PaymentPageState();
 }
 
 class _PaymentPageState extends State<PaymentPage> {
+  late final _providerUser;
+  late final _providerHotels;
+  late final _providerHabitacion;
+  late final _providerContainer;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _providerUser = Provider.of<UserProvider>(context, listen: false);
+    _providerHotels = Provider.of<HotelInfoProvider>(context, listen: false);
+    _providerHabitacion = Provider.of<RoomProvider>(context, listen: false);
+    _providerContainer = Provider.of<HotelProvider>(context, listen: false);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,9 +60,11 @@ class _PaymentPageState extends State<PaymentPage> {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                "\$${'180.00'}", //aqui va $variable.precio
+                "\$${widget.valor}", //aqui va $variable.precio
                 style: GoogleFonts.roboto(
-                    color: HexColor('#E9BD44'), fontWeight: FontWeight.bold, fontSize: 20),
+                    color: HexColor('#E9BD44'),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20),
               ),
             ),
           )
@@ -67,7 +91,32 @@ class _PaymentPageState extends State<PaymentPage> {
               Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Provider.of<ProviderReserva>(context, listen: false).setReserva(
+                      Reserva(
+                        codigoReserva: _providerHabitacion.getRoom.id, 
+                        nombre: _providerHabitacion.getRoom.nombre, 
+                        precio: _providerHabitacion.getRoom.precio, 
+                        numeroCamas: _providerHabitacion.getRoom.numeroCamas, 
+                        tamao: _providerHabitacion.getRoom.tamao, 
+                        numeroHabitacion: _providerHabitacion.getRoom.numeroHabitacion, 
+                        capacidad: _providerHabitacion.getRoom.capacidad, 
+                        correoCliente: _providerUser.getUser.email, 
+                        diasReserva: 10, 
+                        estado: "vacio", 
+                        fechaEntrada: "ahiora",
+                        fechaSalida: "Ahora", 
+                        nombreCliente: _providerUser.getUser.names + _providerUser.getUser.lastNames,
+                        nombreHotel: _providerHotels.getHotel.nombre,
+                        
+                        )
+                    );
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SuccesfullPayment(valor: widget.valor),
+                        ));
+                  },
                   child: Card(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),
