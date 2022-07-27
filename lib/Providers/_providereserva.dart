@@ -30,11 +30,11 @@ class ProviderReserva with ChangeNotifier {
     return reserva;
   }
 
-  String? get getDaysFormatLlegada {
+  int? get getDaysFormatLlegada {
     return reserva.fechaEntrada;
   }
 
-  String? get getDaysFormatSalida {
+  int? get getDaysFormatSalida {
     return reserva.fechaSalida;
   }
 

@@ -81,19 +81,19 @@ class _SuccesfullPaymentState extends State<SuccesfullPayment> {
                 ),
                 onPressed: () {
                   Reserva reserva = Reserva(
-                      codigoReserva: userGuardadoProvider.getUser.email,
+                      codigoReserva: '${hotelContainterProvider.getstart.toString()}${hotelContainterProvider.getend.toString()}${userGuardadoProvider.getUser.email.toString()}',
                       nombre: reservaGuardadaProvider.getRoom.nombre,
                       precio: reservaGuardadaProvider.getRoom.precio,
-                      numeroCamas: reservaGuardadaProvider.getRoom.numeroCamas,
-                      tamao: reservaGuardadaProvider.getRoom.tamao,
+                      numeroCamas: reservaGuardadaProvider.getRoom.numeroCamas.toString(),
+                      tamao: reservaGuardadaProvider.getRoom.tamao.toString(),
                       numeroHabitacion:
                           reservaGuardadaProvider.getRoom.numeroHabitacion,
-                      capacidad: reservaGuardadaProvider.getRoom.capacidad,
+                      capacidad: reservaGuardadaProvider.getRoom.capacidad.toString(),
                       correoCliente: userGuardadoProvider.getUser.email,
                       diasReserva: hotelContainterProvider.getdays,
                       estado: "Reservado",
-                      fechaEntrada: "Hoy",
-                      fechaSalida: "Hoy",
+                      fechaEntrada: hotelContainterProvider.getstart,
+                      fechaSalida: hotelContainterProvider.getend,
                       nombreCliente: userGuardadoProvider.getUser.names +
                           userGuardadoProvider.getUser.lastNames,
                       nombreHotel: hotelGuardarProvider.getHotel.nombre);

@@ -3,21 +3,21 @@ class Reserva {
   final String? codigoReserva; //
   final String? nombre; //
   final int? precio; //
-  final int? numeroCamas; //
-  final int? tamao; //
+  final String? numeroCamas; //
+  final String? tamao; //
   final String? numeroHabitacion; //
-  final int? capacidad; //
+  final String? capacidad; //
   final String? correoCliente; //
   final int? diasReserva; //
   final String? estado; //
-  final String? fechaEntrada; //
-  final String? fechaSalida; //
+  final int? fechaEntrada; //
+  final int? fechaSalida; //
   final String? nombreCliente; //
   final String? nombreHotel; //
 
 
   const Reserva(
-      {this.codigoReserva,
+      {required this.codigoReserva,
       required this.nombre,
       required this.precio,
       required this.numeroCamas,
