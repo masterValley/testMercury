@@ -11,9 +11,16 @@ class ProviderReserva with ChangeNotifier {
   late Hotel hotel;
   late Container container;
   late Reserva reserva;
+  late String idReserva;
 
-  void setReserva (Reserva reservaFinal) {
+  void setReserva(Reserva reservaFinal) {
     reserva = reservaFinal;
+    notifyListeners();
+  }
+
+  void setIdReserva(Reserva reserva) {
+    idReserva =
+        '${reserva.fechaEntrada}${reserva.fechaSalida}${reserva.numeroHabitacion}${reserva.correoCliente}';
     notifyListeners();
   }
 
@@ -30,15 +37,19 @@ class ProviderReserva with ChangeNotifier {
     return reserva;
   }
 
-  String? get getDaysFormatLlegada {
+  int get getDaysFormatLlegada {
     return reserva.fechaEntrada;
   }
 
-  String? get getDaysFormatSalida {
+  int get getDaysFormatSalida {
     return reserva.fechaSalida;
   }
 
   String? get getIdReserva {
     return reserva.codigoReserva;
+  }
+
+  Reserva get getReserva{
+    return reserva;
   }
 }

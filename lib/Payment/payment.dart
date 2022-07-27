@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -92,29 +91,30 @@ class _PaymentPageState extends State<PaymentPage> {
                 padding: const EdgeInsets.all(15.0),
                 child: InkWell(
                   onTap: () {
-                    Provider.of<ProviderReserva>(context, listen: false).setReserva(
-                      Reserva(
-                        codigoReserva: _providerHabitacion.getRoom.id, 
-                        nombre: _providerHabitacion.getRoom.nombre, 
-                        precio: _providerHabitacion.getRoom.precio, 
-                        numeroCamas: _providerHabitacion.getRoom.numeroCamas, 
-                        tamao: _providerHabitacion.getRoom.tamao, 
-                        numeroHabitacion: _providerHabitacion.getRoom.numeroHabitacion, 
-                        capacidad: _providerHabitacion.getRoom.capacidad, 
-                        correoCliente: _providerUser.getUser.email, 
-                        diasReserva: 10, 
-                        estado: "vacio", 
-                        fechaEntrada: "ahiora",
-                        fechaSalida: "Ahora", 
-                        nombreCliente: _providerUser.getUser.names + _providerUser.getUser.lastNames,
-                        nombreHotel: _providerHotels.getHotel.nombre,
-                        
-                        )
-                    );
+                    Provider.of<ProviderReserva>(context, listen: false)
+                        .setReserva(Reserva(
+                      codigoReserva: _providerHabitacion.getRoom.id,
+                      nombre: _providerHabitacion.getRoom.nombre,
+                      precio: _providerHabitacion.getRoom.precio,
+                      numeroCamas: _providerHabitacion.getRoom.numeroCamas,
+                      tamao: _providerHabitacion.getRoom.tamao,
+                      numeroHabitacion:
+                          _providerHabitacion.getRoom.numeroHabitacion,
+                      capacidad: _providerHabitacion.getRoom.capacidad,
+                      correoCliente: _providerUser.getUser.email,
+                      diasReserva: _providerContainer.getdays,
+                      estado: "vacio",
+                      fechaEntrada: _providerContainer.getstart,
+                      fechaSalida: _providerContainer.getend,
+                      nombreCliente: _providerUser.getUser.names +
+                          _providerUser.getUser.lastNames,
+                      nombreHotel: _providerHotels.getHotel.nombre,
+                    ));
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => SuccesfullPayment(valor: widget.valor),
+                          builder: (context) =>
+                              SuccesfullPayment(valor: widget.valor),
                         ));
                   },
                   child: Card(
@@ -135,7 +135,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                 fontSize: 18),
                           ),
                         ),
-                        Padding(
+                        const Padding(
                           padding: EdgeInsets.fromLTRB(0.0, 0.0, 10.0, 0.0),
                           child: Icon(
                             color: Color(0xff003087),

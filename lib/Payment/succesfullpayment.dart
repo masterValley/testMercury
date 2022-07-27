@@ -23,13 +23,13 @@ class SuccesfullPayment extends StatefulWidget {
 }
 
 class _SuccesfullPaymentState extends State<SuccesfullPayment> {
- late final reservaGuardadaProvider;
+  late final reservaGuardadaProvider;
   late final userGuardadoProvider;
   late final hotelGuardarProvider;
   late final reservaRegistrada;
   late final hotelContainterProvider;
 
-  final ReservasApi reservasApi =  ReservasApi();
+  final ReservasApi reservasApi = ReservasApi();
 
   @override
   void initState() {
@@ -37,9 +37,13 @@ class _SuccesfullPaymentState extends State<SuccesfullPayment> {
     super.initState();
     reservaGuardadaProvider = Provider.of<RoomProvider>(context, listen: false);
     userGuardadoProvider = Provider.of<UserProvider>(context, listen: false);
-    hotelGuardarProvider = Provider.of<HotelInfoProvider>(context, listen: false);
+    hotelGuardarProvider =
+        Provider.of<HotelInfoProvider>(context, listen: false);
     reservaRegistrada = Provider.of<ProviderReserva>(context, listen: false);
-    hotelContainterProvider = Provider.of<HotelProvider>(context, listen: false);
+    hotelContainterProvider =
+        Provider.of<HotelProvider>(context, listen: false);
+
+    Provider.of<ProviderReserva>(context, listen: false).setIdReserva(reservaRegistrada.getReserva);
   }
 
   @override
@@ -81,7 +85,7 @@ class _SuccesfullPaymentState extends State<SuccesfullPayment> {
                 ),
                 onPressed: () {
                   Reserva reserva = Reserva(
-                      codigoReserva: userGuardadoProvider.getUser.email,
+                      codigoReserva: reservaGuardadaProvider.idReserva,
                       nombre: reservaGuardadaProvider.getRoom.nombre,
                       precio: reservaGuardadaProvider.getRoom.precio,
                       numeroCamas: reservaGuardadaProvider.getRoom.numeroCamas,
@@ -92,16 +96,19 @@ class _SuccesfullPaymentState extends State<SuccesfullPayment> {
                       correoCliente: userGuardadoProvider.getUser.email,
                       diasReserva: hotelContainterProvider.getdays,
                       estado: "Reservado",
-                      fechaEntrada: "Hoy",
-                      fechaSalida: "Hoy",
+                      fechaEntrada: reservaGuardadaProvider.getDaysFormatLlegada,
+                      fechaSalida: reservaGuardadaProvider.getDaysFormatSalida,
                       nombreCliente: userGuardadoProvider.getUser.names +
                           userGuardadoProvider.getUser.lastNames,
                       nombreHotel: hotelGuardarProvider.getHotel.nombre);
-                  reservasApi.createReserva(hotelGuardarProvider.getIDHotel, reservaGuardadaProvider.getRoom.id, reserva.toMap());
+                  ReservasApi.createReserva(hotelGuardarProvider.getIDHotel,
+                      reservaGuardadaProvider.getRoom.id, reserva.toMap());
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ResumenReserva(valor: widget.valor,),
+                        builder: (context) => ResumenReserva(
+                          valor: widget.valor,
+                        ),
                       ));
                 },
                 child: Container(
@@ -123,4 +130,3 @@ class _SuccesfullPaymentState extends State<SuccesfullPayment> {
     );
   }
 }
-
