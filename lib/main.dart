@@ -12,14 +12,13 @@ import 'package:provider/provider.dart';
 import 'Providers/_providerhotel.dart';
 
 void main() async {
-  //WidgetsFlutterBinding.ensureInitialized();
-  //await Firebase.initializeApp();
-  //FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -28,7 +27,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => HotelInfoProvider()),
         ChangeNotifierProvider(create: (context) => UserProvider()),
         ChangeNotifierProvider(create: (context) => RoomProvider()),
-        ChangeNotifierProvider(create: (context) => ProviderReserva(),)
+        ChangeNotifierProvider(
+          create: (context) => ProviderReserva(),
+        )
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
