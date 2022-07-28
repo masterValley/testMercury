@@ -12,9 +12,9 @@ import 'package:provider/provider.dart';
 import 'Providers/_providerhotel.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
+  //WidgetsFlutterBinding.ensureInitialized();
+  //await Firebase.initializeApp();
+  //FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
   runApp(MyApp());
 }
 

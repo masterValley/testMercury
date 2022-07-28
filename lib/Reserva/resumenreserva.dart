@@ -40,8 +40,7 @@ class _ResumenReservaState extends State<ResumenReserva> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: HexColor("#191C25"),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      body: ListView(
         children: [
           Padding(
             padding: const EdgeInsets.fromLTRB(10.0, 50.0, 10.0, 10.0),
