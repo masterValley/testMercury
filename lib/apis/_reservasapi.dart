@@ -32,8 +32,8 @@ class ReservasApi {
           "correoCliente": reserva.getReserva.correoCliente,
           "diasReserva": reserva.getReserva.diasReserva,
           "estado": "asd",
-          "fechaEntrada": 111454 ,//reserva.getReserva.fechaEntrada.toString(), 
-          "fechaSalida": 21654, //reserva.getReserva.fechaSalida.toString(),
+          "fechaEntrada": reserva.getReserva.fechaEntrada, 
+          "fechaSalida": reserva.getReserva.fechaSalida, //reserva.getReserva.fechaSalida.toString(),
           "nombreCliente": reserva.getReserva.nombreCliente,
           "nombreHabitacion": reserva.getReserva.nombre,
           "nombreHotel": reserva.getReserva.nombreHotel,
@@ -41,7 +41,7 @@ class ReservasApi {
           "precio": reserva.getReserva.precio,
           "tamañoHabitacion": reserva.getReserva.tamao
         }));
-    if (response.statusCode == 204) {
+    if (response.statusCode == 204 || response.statusCode == 200) {
       print(response.body);
       return Reserva.fromJson(json.decode(response.body));
     } else {

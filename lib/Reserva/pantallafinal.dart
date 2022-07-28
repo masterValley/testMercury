@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:mercury_app/PdfGenerator/mobile_path.dart';
+import 'package:mercury_app/Home/home.dart';
 import 'package:mercury_app/PdfGenerator/pdf_generate.dart';
 import 'package:mercury_app/Providers/_providereserva.dart';
 import 'package:mercury_app/Providers/_providerhotel.dart';
 import 'package:provider/provider.dart';
-import 'package:syncfusion_flutter_pdf/pdf.dart';
 
 class FinalPage extends StatefulWidget {
   num valor;
@@ -111,7 +110,7 @@ class _FinalPageState extends State<FinalPage> {
                     ),
                   ),
                 ),
-                onPressed: () async {},
+                onPressed: () {HomeStart();},
                 child: Container(
                   margin: const EdgeInsets.only(top: 16, bottom: 16),
                   child: Text(

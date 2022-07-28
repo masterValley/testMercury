@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:intl/intl.dart';
 import 'package:mercury_app/Providers/_providereserva.dart';
 import 'package:mercury_app/Providers/_providerhabitacion.dart';
 import 'package:mercury_app/Providers/_providerhotel.dart';
@@ -253,12 +254,62 @@ class _ResumenReservaState extends State<ResumenReserva> {
               ),
             ],
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(15.0, 10.0, 0.0, 0.0),
+                child: Text(
+                  'FECHA DE ENTRADA :',
+                  style: GoogleFonts.leagueGothic(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w700,
+                      color: const Color(0xffE9BD44)),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 0.0),
+                child: Text(
+                  DateFormat('dd/MM/yyyy').format(DateTime.fromMillisecondsSinceEpoch(reservaRegistrada.getReservaFinal.fechaEntrada*1000)),
+                  style: GoogleFonts.leagueGothic(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w500,
+                      color: HexColor("#FFFFFF")),
+                ),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(15.0, 10.0, 0.0, 0.0),
+                child: Text(
+                  'FECHA DE SALIDA :',
+                  style: GoogleFonts.leagueGothic(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w700,
+                      color: const Color(0xffE9BD44)),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 0.0),
+                child: Text(
+                  DateFormat('dd/MM/yyyy').format(DateTime.fromMillisecondsSinceEpoch(reservaRegistrada.getReservaFinal.fechaSalida*1000)),
+                  style: GoogleFonts.leagueGothic(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w500,
+                      color: HexColor("#FFFFFF")),
+                ),
+              ),
+            ],
+          ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(15.0, 80.0, 0.0, 0.0),
+                padding: const EdgeInsets.fromLTRB(15.0, 10.0, 0.0, 0.0),
                 child: Text(
                   'TOTAL CANCELADO :',
                   style: GoogleFonts.leagueGothic(

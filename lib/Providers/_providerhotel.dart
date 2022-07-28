@@ -4,15 +4,17 @@ import 'package:mercury_app/Models/dataContainer.dart';
 class HotelProvider with ChangeNotifier {
   late ContainerData container;
 
-  late int startTS, endTS;
+  late int startTS, endTS, startAux, endAux;
   void setValues(String destino, DateTime start, DateTime end) {
     start = start;
     end = end;
     destino = destino;
     startTS = start.millisecondsSinceEpoch;
-    endTS = start.millisecondsSinceEpoch;
+    endTS = end.millisecondsSinceEpoch;
+    startAux = (startTS/1000).round();
+    endAux = (endTS/1000).round()+43200;
     int dayBetween = end.difference(start).inDays;
-    container = ContainerData(destino, startTS, endTS, dayBetween);
+    container = ContainerData(destino, startAux, endAux, dayBetween);
     debugPrint('Diferencia de días: ${container.dayBetween}');
     debugPrint('llegada: ${container.start}');
     debugPrint('salida: ${container.end}');
@@ -24,12 +26,10 @@ class HotelProvider with ChangeNotifier {
   }
 
   int get getstart {
-    print(container.start);
     return container.start;
   }
 
   int get getend {
-    print(container.start);
     return container.end;
   }
 
