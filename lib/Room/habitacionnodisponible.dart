@@ -32,132 +32,205 @@ class _UnavailableRoomState extends State<UnavailableRoom> {
         backgroundColor: const Color(0xfff2f2f2),
         foregroundColor: const Color(0xff191c25),
       ),
-      body: Stack(children: [
-        Container(
-            margin: const EdgeInsets.all(16),
-            color: const Color(0xfff2f2f2),
-            child: ListView(
-              children: [
-                ListTile(
-                  title: Text(
-                    widget.habitacion.nombre,
-                    style: GoogleFonts.leagueGothic(
-                        fontSize: 40,
-                        fontWeight: FontWeight.w700,
-                        color: const Color(0xff191c25)),
+      body: Container(
+        margin: const EdgeInsets.all(8),
+        child: ListView(
+            shrinkWrap: true,
+            padding: const EdgeInsets.all(2),
+            children: [
+              ListTile(
+                title: Text(
+                  widget.habitacion.nombre,
+                  style: GoogleFonts.leagueGothic(
+                      fontSize: 40,
+                      fontWeight: FontWeight.w700,
+                      color: const Color(0xff191c25)),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.all(8),
+                child: IntrinsicHeight(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        'NÚMERO DE HABITACIÓN:  ',
+                        style: GoogleFonts.roboto(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700,
+                            color: const Color(0xff191c25)),
+                      ),
+                      Text(
+                        widget.habitacion.numeroHabitacion,
+                        style: GoogleFonts.roboto(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w300,
+                            color: const Color(0xff191c25)),
+                      ),
+                    ],
                   ),
                 ),
-                ListTile(
-                  title: Text(
-                    'NÚMERO DE HABITACIÓN: ',
-                    style: GoogleFonts.leagueGothic(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w700,
-                        color: const Color(0xffE9BD44)),
+              ),
+              Container(
+                margin: const EdgeInsets.all(8),
+                child: IntrinsicHeight(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        'CAPACIDAD:  ',
+                        style: GoogleFonts.roboto(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700,
+                            color: const Color(0xff191c25)),
+                      ),
+                      Text(
+                        '${widget.habitacion.capacidad} persona(s)',
+                        style: GoogleFonts.roboto(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w300,
+                            color: const Color(0xff191c25)),
+                      ),
+                    ],
                   ),
                 ),
-                ListTile(
-                  title: Text(
-                    widget.habitacion.numeroHabitacion,
-                    style: GoogleFonts.roboto(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        color: const Color(0xff191c25)),
+              ),
+              Container(
+                margin: const EdgeInsets.all(8),
+                child: IntrinsicHeight(
+                  child: Row(
+                    children: [
+                      Text(
+                        'CAMAS: ',
+                        style: GoogleFonts.roboto(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700,
+                            color: const Color(0xff191c25)),
+                      ),
+                      Text(
+                        '${widget.habitacion.numeroCamas} cama(s) tipo: ${widget.habitacion.tipoCamas}',
+                        style: GoogleFonts.roboto(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w300,
+                            color: const Color(0xff191c25)),
+                      ),
+                    ],
                   ),
                 ),
-                ListTile(
-                  title: Text(
-                    'CAPACIDAD: ',
-                    style: GoogleFonts.leagueGothic(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w700,
-                        color: const Color(0xffE9BD44)),
+              ),
+              Container(
+                margin: const EdgeInsets.all(8),
+                child: IntrinsicHeight(
+                  child: Row(
+                    children: [
+                      Text(
+                        'TAMAÑO: ',
+                        style: GoogleFonts.roboto(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700,
+                            color: const Color(0xff191c25)),
+                      ),
+                      Text(
+                        '${widget.habitacion.tamao} metros cuadradros',
+                        style: GoogleFonts.roboto(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w300,
+                            color: const Color(0xff191c25)),
+                      ),
+                    ],
                   ),
                 ),
-                ListTile(
-                  title: Text(
-                    '${widget.habitacion.capacidad} persona(s)',
-                    style: GoogleFonts.roboto(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        color: const Color(0xff191c25)),
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 8, left: 8),
+                child: IntrinsicHeight(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.all(8),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Align(
+                              alignment: Alignment.topLeft,
+                              child: Text(
+                                'EN EL BAÑO:',
+                                style: GoogleFonts.roboto(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w700,
+                                    color: const Color(0xff191c25)),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.topLeft,
+                              child: Text(
+                                widget.habitacion.itemsBao.join("\n"),
+                                style: GoogleFonts.roboto(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w300,
+                                    color: const Color(0xff191c25)),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.all(8),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Align(
+                              alignment: Alignment.topLeft,
+                              child: Text(
+                                'EN LA HABITACIÓN:',
+                                style: GoogleFonts.roboto(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w700,
+                                    color: const Color(0xff191c25)),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.topLeft,
+                              child: Text(
+                                widget.habitacion.itemsHabitacion.join("\n"),
+                                style: GoogleFonts.roboto(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w300,
+                                    color: const Color(0xff191c25)),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                ListTile(
-                  title: Text(
-                    'CAMAS: ',
-                    style: GoogleFonts.leagueGothic(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w700,
-                        color: const Color(0xffE9BD44)),
-                  ),
+              ),
+              ListTile(
+                title: Text(
+                  'POLÍTICA DE HUMO:',
+                  style: GoogleFonts.roboto(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w700,
+                      color: const Color(0xff191c25)),
                 ),
-                ListTile(
-                  title: Text(
-                    '${widget.habitacion.numeroCamas} cama(s) tipo: ${widget.habitacion.tipoCamas}',
-                    style: GoogleFonts.roboto(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        color: const Color(0xff191c25)),
-                  ),
+              ),
+              ListTile(
+                title: Text(
+                  widget.habitacion.politicaHumo,
+                  style: GoogleFonts.roboto(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w300,
+                      color: const Color(0xff191c25)),
                 ),
-                ListTile(
-                  title: Text(
-                    'EN EL BAÑO:',
-                    style: GoogleFonts.leagueGothic(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w700,
-                        color: const Color(0xffE9BD44)),
-                  ),
-                ),
-                ListTile(
-                  title: Text(
-                    widget.habitacion.itemsBao.join("\n"),
-                    style: GoogleFonts.roboto(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        color: const Color(0xff191c25)),
-                  ),
-                ),
-                ListTile(
-                  title: Text(
-                    'EN LA HABITACIÓN:',
-                    style: GoogleFonts.leagueGothic(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w700,
-                        color: const Color(0xffE9BD44)),
-                  ),
-                ),
-                ListTile(
-                  title: Text(
-                    widget.habitacion.itemsHabitacion.join("\n"),
-                    style: GoogleFonts.roboto(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        color: const Color(0xff191c25)),
-                  ),
-                ),
-                ListTile(
-                  title: Text(
-                    'POLÍTICA DE HUMO:',
-                    style: GoogleFonts.leagueGothic(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w700,
-                        color: const Color(0xffE9BD44)),
-                  ),
-                ),
-                ListTile(
-                  title: Text(
-                    widget.habitacion.politicaHumo,
-                    style: GoogleFonts.roboto(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        color: const Color(0xff191c25)),
-                  ),
-                )
-              ],
-            ))
-      ]),
+              )
+            ],
+          ),
+      ),
     );
   }
 }

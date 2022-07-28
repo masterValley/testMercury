@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 
 class DestinoApi {
   static Future<List<Destino>> getDestinosSuggestions(String query) async {
-    final url = Uri.parse(
+    /*final url = Uri.parse(
         'https://ws.api.location-world.com/Location.ashx?function=GetCitiesContains&prefix=$query&token=8008DC45EF07DEF012A39B88F5DDDCEF74E80FF0');
     final response = await http.get(url);
 
@@ -15,6 +15,8 @@ class DestinoApi {
       return destinos.map((json) => Destino.fromJson(json)).toList();
     } else {
       throw Exception();
-    }
+    }*/
+    List<Destino> destinos = [const Destino(name: 'Cuenca'),const Destino(name: 'Guayaquil')];
+    return destinos;
   }
 }
